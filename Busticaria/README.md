@@ -6,7 +6,7 @@ Diego Ahualli
 ## Descripción
 Busticaria es una aplicación web de ecommerce desarrollada como trabajo práctico para la materia Aplicaciones Web 1.
 
-En esta primera etapa se implementa la estructura base del sitio, incluyendo:
+En la primera etapa se implementa la estructura base del sitio, incluyendo:
 
 - Página de inicio (Home)
 - Página de login
