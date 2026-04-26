@@ -3,23 +3,31 @@ const navbar = document.getElementById("navbar");
 navbar.innerHTML = `
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
   <div class="container-fluid">
-    
     <a class="navbar-brand" href="/Busticaria/pages/index.html">
       <img src="/Busticaria/assets/img/logo.webp" alt="Busticaria" height="80">
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="/Busticaria/pages/index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="/Busticaria/pages/categories/categoria-tecnologia.html">Tecnología</a></li>
-        <li class="nav-item"><a class="nav-link" href="/Busticaria/pages/categories/categoria-ropa.html">Ropa</a></li>
-        <li class="nav-item"><a class="nav-link" href="/Busticaria/pages/categories/categoria-hogar.html">Hogar</a></li>
-        <li class="nav-item"><a class="nav-link" href="/Busticaria/pages/auth/login.html">Login</a></li>
-        <li class="nav-item"><a class="nav-link" href="/Busticaria/pages/auth/registro.html">Registro</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Busticaria/pages/index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Busticaria/pages/categories/categoria-tecnologia.html">Tecnología</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Busticaria/pages/categories/categoria-ropa.html">Ropa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Busticaria/pages/categories/categoria-hogar.html">Hogar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Busticaria/pages/auth/login.html">Login</a>
+        </li>
       </ul>
 
       <button class="btn btn-danger ms-lg-2" type="button">

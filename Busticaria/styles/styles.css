@@ -1,4 +1,4 @@
-/* ===== VARIABLES ===== */
+/* Colores principales */
 :root {
     --color-primario: #4b2e2b;
     --color-secundario: #cb997e;
@@ -7,14 +7,49 @@
     --color-blanco: #ffffff;
 }
 
-/* ===== GENERAL ===== */
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     background-color: var(--color-fondo);
     padding-top: 5.5rem;
 }
 
-/* ===== NAVBAR ===== */
+h1, h2 {
+    color: var(--color-primario);
+}
+
+a {
+    color: var(--color-acento);
+}
+
+a:hover {
+    color: var(--color-secundario);
+}
+
+/* Contenido principal */
+main {
+    padding: 20px;
+}
+
+/* Portada del home */
+.hero-busticaria {
+    padding: 1rem 0;
+    background: linear-gradient(135deg, var(--color-primario), var(--color-acento));
+    color: var(--color-blanco);
+}
+
+.hero-busticaria h1 {
+    color: var(--color-blanco);
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero-busticaria p {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+/* Navbar */
 .navbar {
     background-color: var(--color-primario) !important;
 }
@@ -29,7 +64,7 @@ body {
     color: var(--color-secundario) !important;
 }
 
-/* ===== BOTONES ===== */
+/* Botones */
 .btn-danger {
     background-color: var(--color-secundario);
     border: none;
@@ -39,27 +74,81 @@ body {
     background-color: #b5836d;
 }
 
-/* ===== TITULOS ===== */
-h1, h2 {
-    color: var(--color-primario);
+.btn-busticaria {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0.75rem;
+    font-weight: 600;
 }
 
-/* ===== LINKS ===== */
-a {
+.btn-busticaria:hover {
+    background-color: var(--color-acento);
+    color: var(--color-blanco);
+}
+
+/* Categorías */
+.category-card {
+    display: block;
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 16px;
+    background-color: var(--color-blanco);
+    color: var(--color-primario);
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    color: var(--color-blanco) !important;
+    background-color: var(--color-primario);
+}
+
+/* Cards de productos */
+.product-card {
+    overflow: hidden;
+}
+
+.product-card__img {
+    height: 220px;
+    object-fit: contain;
+    padding: 1.5rem;
+    background-color: var(--color-fondo);
+}
+
+.product-card .card-title {
+    color: var(--color-primario);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.product-card .card-text {
     color: var(--color-acento);
 }
 
-a:hover {
-    color: var(--color-secundario);
+.product-card__price {
+    color: var(--color-primario);
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
-/* ===== MAIN ===== */
-main {
-    padding: 20px;
+.card-custom {
+    border: none;
+    border-radius: 16px;
+    background-color: var(--color-blanco);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* ===== LOGIN Y REGISTRO ===== */
+.card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.12);
+}
 
+/* Login y registro */
 .auth-container {
     min-height: calc(100vh - 5.5rem);
     display: flex;
@@ -96,59 +185,4 @@ main {
 .form-control:focus {
     border-color: var(--color-secundario);
     box-shadow: 0 0 0 0.25rem rgba(203, 153, 126, 0.25);
-}
-
-.btn-busticaria {
-    background-color: var(--color-primario);
-    color: var(--color-blanco);
-    border: none;
-    padding: 0.75rem;
-    font-weight: 600;
-}
-
-.btn-busticaria:hover {
-    background-color: var(--color-acento);
-    color: var(--color-blanco);
-}
-
-/* ===== CARD DE PRODUCTO ===== */
-
-.product-card {
-    overflow: hidden;
-}
-
-.product-card__img {
-    height: 220px;
-    object-fit: contain;
-    padding: 1.5rem;
-    background-color: var(--color-fondo);
-}
-
-.product-card .card-title {
-    color: var(--color-primario);
-    font-size: 1.4rem;
-    font-weight: 700;
-}
-
-.product-card .card-text {
-    color: var(--color-acento);
-}
-
-.product-card__price {
-    color: var(--color-primario);
-    font-size: 1.3rem;
-    font-weight: 700;
-}
-
-.card-custom {
-    border: none;
-    border-radius: 16px;
-    background-color: #ffffff;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card-custom:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 35px rgba(0,0,0,0.12);
 }
