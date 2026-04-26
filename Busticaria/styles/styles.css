@@ -58,19 +58,6 @@ main {
     padding: 20px;
 }
 
-/* ===== CARD (para después) ===== */
-.card-custom {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    background-color: var(--color-blanco);
-    transition: transform 0.2s;
-}
-
-.card-custom:hover {
-    transform: scale(1.02);
-}
-
 /* ===== LOGIN Y REGISTRO ===== */
 
 .auth-container {
@@ -122,4 +109,46 @@ main {
 .btn-busticaria:hover {
     background-color: var(--color-acento);
     color: var(--color-blanco);
+}
+
+/* ===== CARD DE PRODUCTO ===== */
+
+.product-card {
+    overflow: hidden;
+}
+
+.product-card__img {
+    height: 220px;
+    object-fit: contain;
+    padding: 1.5rem;
+    background-color: var(--color-fondo);
+}
+
+.product-card .card-title {
+    color: var(--color-primario);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.product-card .card-text {
+    color: var(--color-acento);
+}
+
+.product-card__price {
+    color: var(--color-primario);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.card-custom {
+    border: none;
+    border-radius: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.12);
 }
