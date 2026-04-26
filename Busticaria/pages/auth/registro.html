@@ -4,53 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busticaria | Registro</title>
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Busticaria/styles/styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <img src="../../img/logo.png" alt="Logo de Busticaria" width="100">
-            <a href="../index.html">Home</a>
-            <a href="../categories/categoria-tecnologia.html">Tecnología</a>
-            <a href="../categories/categoria-ropa.html">Ropa</a>
-            <a href="../categories/categoria-hogar.html">Hogar</a>
-            <a href="login.html">Login</a>
-            <a href="registro.html">Registro</a>
-            <a href="#">Logout</a>
-        </nav>
-    </header>
+    <header id="navbar"></header>
 
-    <main>
+    <main class="container auth-container">
+        <section class="auth-card">
         <h1>Registro de usuario</h1>
+        <p class="auth-subtitle">Creá tu cuenta para comprar en Busticaria</p>
 
         <form action="#" method="post">
-            <div>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+            <div class="mb-3">
+                <label class="form-label" for="nombre">Nombre</label>
+                <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
             </div>
 
-            <div>
-                <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido" required>
+            <div class="mb-3">
+                <label class="form-label" for="apellido">Apellido</label>
+                <input class="form-control" type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido" required>
             </div>
 
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Ingrese su email" required>
+            <div class="mb-3">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" type="email" id="email" name="email" placeholder="Ingrese su email" required>
             </div>
 
-            <div>
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+            <div class="mb-3">
+                <label class="form-label" for="password">Contraseña</label>
+                <input class="form-control" type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+             </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="fechaNacimiento">Fecha de nacimiento</label>
+                <input class="form-control" type="date" id="fechaNacimiento" name="fechaNacimiento" required>
             </div>
 
-            <div>
-                <label for="fechaNacimiento">Fecha de nacimiento:</label>
-                <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
-            </div>
+      <button class="btn btn-busticaria w-100" type="submit">Registrarse</button>
+    </form>
+  </section>
+</main>
 
-            <button type="submit">Registrarse</button>
-        </form>
-    </main>
+    <script src="/Busticaria/components/navbar.component.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,18 +1,125 @@
+/* ===== VARIABLES ===== */
+:root {
+    --color-primario: #4b2e2b;
+    --color-secundario: #cb997e;
+    --color-fondo: #f5ebe0;
+    --color-acento: #6b705c;
+    --color-blanco: #ffffff;
+}
+
+/* ===== GENERAL ===== */
 body {
     font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    padding-top: 5.5rem;
 }
 
-nav {
-    background-color: #333;
-    padding: 10px;
+/* ===== NAVBAR ===== */
+.navbar {
+    background-color: var(--color-primario) !important;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 10px;
+.navbar-brand,
+.nav-link {
+    color: var(--color-blanco) !important;
+    font-weight: 500;
 }
 
+.nav-link:hover {
+    color: var(--color-secundario) !important;
+}
+
+/* ===== BOTONES ===== */
+.btn-danger {
+    background-color: var(--color-secundario);
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #b5836d;
+}
+
+/* ===== TITULOS ===== */
+h1, h2 {
+    color: var(--color-primario);
+}
+
+/* ===== LINKS ===== */
+a {
+    color: var(--color-acento);
+}
+
+a:hover {
+    color: var(--color-secundario);
+}
+
+/* ===== MAIN ===== */
 main {
     padding: 20px;
+}
+
+/* ===== CARD (para después) ===== */
+.card-custom {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: var(--color-blanco);
+    transition: transform 0.2s;
+}
+
+.card-custom:hover {
+    transform: scale(1.02);
+}
+
+/* ===== LOGIN Y REGISTRO ===== */
+
+.auth-container {
+    min-height: calc(100vh - 5.5rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 430px;
+    background-color: var(--color-blanco);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(75, 46, 43, 0.18);
+}
+
+.auth-card h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: var(--color-acento);
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    color: var(--color-primario);
+    font-weight: 600;
+}
+
+.form-control:focus {
+    border-color: var(--color-secundario);
+    box-shadow: 0 0 0 0.25rem rgba(203, 153, 126, 0.25);
+}
+
+.btn-busticaria {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0.75rem;
+    font-weight: 600;
+}
+
+.btn-busticaria:hover {
+    background-color: var(--color-acento);
+    color: var(--color-blanco);
 }
