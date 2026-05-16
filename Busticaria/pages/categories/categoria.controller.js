@@ -16,6 +16,14 @@ const productos = [
         categoria: "ropa"
     },
     {
+    titulo: "Playstation 5",
+    descripcion: "Consola de videojuegos de última generación con gráficos impresionantes y rendimiento excepcional. Bundle Gran Turismo 7.",
+    precio: 500000,
+    imagen: "../../assets/img/ps5.webp",
+    categoria: "tecnologia",
+    destacado: true
+    },
+    {
         titulo: "Auriculares Bluetooth",
         descripcion: "Auriculares inalámbricos con buena autonomía.",
         precio: 35000,
