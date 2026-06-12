@@ -156,9 +156,21 @@ botonesCarrito.forEach(function(boton){
             return;
         }
 
-        alert(
-            "Producto agregado al carrito"
-        );
+        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+        const card = boton.closest(".card-body");
+
+        const producto = {
+            titulo: card.querySelector(".card-title").textContent,
+            precio: card.querySelector(".fw-bold").textContent,
+            cantidad: cantidad
+        };
+
+        carrito.push(producto);
+
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+
+        alert("Producto agregado al carrito");
 
     });
 
