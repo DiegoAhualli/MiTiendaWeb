@@ -1,5 +1,6 @@
 const contenedorProductos = document.getElementById("contenedorProductos");
 
+/*
 const productos = [
     {
         titulo: "Remera Oversize",
@@ -52,6 +53,7 @@ const productos = [
         categoria: "hogar"
     }
 ];
+*/
 
 let categoriaActual = "";
 
@@ -63,13 +65,46 @@ if (window.location.pathname.includes("categoria-ropa")) {
     categoriaActual = "hogar";
 }
 
-const productosFiltrados = productos.filter(function(producto) {
-    return producto.categoria === categoriaActual;
-});
+async function cargarProductos() {
 
-productosFiltrados.forEach(function(producto) {
-    contenedorProductos.innerHTML += crearCardProducto(producto);
-});
+    const productos = await obtenerProductos();
+
+    const productosFiltrados = productos.filter(function(producto) {
+
+        if (categoriaActual === "tecnologia") {
+
+            return producto.category === "smartphones"
+            || producto.category === "laptops";
+        }
+
+        if (categoriaActual === "hogar") {
+
+            return producto.category === "furniture"
+            || producto.category === "home-decoration";
+        }
+
+        if (categoriaActual === "ropa") {
+
+            return producto.category === "mens-shirts"
+            || producto.category === "womens-dresses";
+        }
+
+    });
+
+    productosFiltrados.forEach(function(producto) {
+
+        contenedorProductos.innerHTML += crearCardProducto({
+            titulo: producto.title,
+            descripcion: producto.description,
+            precio: producto.price,
+            imagen: producto.thumbnail
+        });
+
+    });
+
+}
+
+cargarProductos();
 
 const botonesSumar = document.querySelectorAll(".btn-sumar");
 const botonesRestar = document.querySelectorAll(".btn-restar");
