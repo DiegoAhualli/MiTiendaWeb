@@ -3,7 +3,7 @@ const formLogin = document.getElementById("formLogin");
 formLogin.addEventListener("submit", function(evento) {
     evento.preventDefault();
 
-    localStorage.setItem("usuarioLogueado", "true");
+    sessionStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
 
     window.location.href = "../../home.html";
 });

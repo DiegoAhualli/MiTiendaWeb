@@ -1,6 +1,6 @@
 const navbar = document.getElementById("navbar");
 
-const usuarioLogueado = localStorage.getItem("usuarioLogueado");
+const usuarioLogueado = sessionStorage.getItem("usuarioLogueado");
 
 let basePath = "";
 let logoPath = "../assets/img/logo.webp";
@@ -60,7 +60,7 @@ if (paginaActual.includes("/auth/login/")) {
         </li>
     `;
 
-    if (usuarioLogueado === "true") {
+    if (usuarioLogueado) {
         linksNavbar += `
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="${basePath}carrito/carrito.html">
@@ -121,7 +121,7 @@ const btnLogout = document.getElementById("btnLogout");
 
 if (btnLogout) {
     btnLogout.addEventListener("click", function () {
-        localStorage.removeItem("usuarioLogueado");
+        sessionStorage.removeItem("usuarioLogueado");
         window.location.href = `${basePath}auth/login/login.html`;
     });
 }

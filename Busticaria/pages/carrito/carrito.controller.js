@@ -1,5 +1,5 @@
-const usuarioLogueado = localStorage.getItem("usuarioLogueado");
+const usuarioLogueado = sessionStorage.getItem("usuarioLogueado");
 
-if(usuarioLogueado !== "true"){
+if(!usuarioLogueado){
     window.location.href="../auth/login/login.html";
 }
