@@ -98,6 +98,17 @@ botonesCarrito.forEach(function(boton){
 
     boton.addEventListener("click",function(){
 
+        const usuarioLogueado = sessionStorage.getItem("usuarioLogueado");
+
+        if (!usuarioLogueado) {
+
+            alert("Debes iniciar sesión para agregar productos al carrito");
+
+            window.location.href = "../auth/login/login.html";
+
+            return;
+        }
+
         const cantidad =
         boton.parentElement
         .querySelector(".cantidad")
