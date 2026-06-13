@@ -95,10 +95,13 @@ async function cargarProductosHome() {
             const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
             const card = boton.closest(".card-body");
 
+            const cardCompleta = boton.closest(".card");
+
             const producto = {
                 titulo: card.querySelector(".card-title").textContent,
                 precio: card.querySelector(".fw-bold").textContent,
-                cantidad: cantidad
+                cantidad: cantidad,
+                imagen: cardCompleta.querySelector("img").src
             };
 
             carrito.push(producto);
