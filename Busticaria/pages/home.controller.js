@@ -1,23 +1,113 @@
-const contenedorDestacado = document.getElementById("contenedorDestacado");
+const contenedorTecnologia = document.getElementById("productosTecnologiaHome");
+const contenedorRopa = document.getElementById("productosRopaHome");
+const contenedorHogar = document.getElementById("productosHogarHome");
 
-contenedorDestacado.innerHTML = `
-    <article class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
-            <img src="../assets/img/ps5.webp" class="card-img-top" alt="Playstation 5">
+async function cargarProductosHome() {
 
-            <div class="card-body d-flex flex-column">
-                <h3 class="card-title h5">Playstation 5</h3>
+    const productos = await obtenerProductos();
 
-                <p class="card-text">
-                    Consola de videojuegos de última generación con gráficos impresionantes y rendimiento excepcional. Bundle Gran Turismo 7.
-                </p>
+    const productosTecnologia = productos.filter(function(producto) {
+        return producto.category === "smartphones"
+        || producto.category === "laptops";
+    }).slice(0, 3);
 
-                <p class="fw-bold">$500000</p>
+    const productosRopa = productos.filter(function(producto) {
+        return producto.category === "mens-shirts"
+        || producto.category === "womens-dresses";
+    }).slice(0, 3);
 
-                <a href="./categories/categoria-tecnologia.html#ps5-destacado" class="btn btn-busticaria mt-auto">
-                    Ver producto destacado
-                </a>
-            </div>
-        </div>
-    </article>
-`;
+    const productosHogar = productos.filter(function(producto) {
+        return producto.category === "furniture"
+        || producto.category === "home-decoration";
+    }).slice(0, 3);
+
+    contenedorTecnologia.innerHTML = "";
+    contenedorRopa.innerHTML = "";
+    contenedorHogar.innerHTML = "";
+
+    productosTecnologia.forEach(function(producto) {
+        contenedorTecnologia.innerHTML += crearCardProducto({
+            titulo: producto.title,
+            descripcion: producto.description,
+            precio: producto.price,
+            imagen: producto.thumbnail
+        });
+    });
+
+    productosRopa.forEach(function(producto) {
+        contenedorRopa.innerHTML += crearCardProducto({
+            titulo: producto.title,
+            descripcion: producto.description,
+            precio: producto.price,
+            imagen: producto.thumbnail
+        });
+    });
+
+    productosHogar.forEach(function(producto) {
+        contenedorHogar.innerHTML += crearCardProducto({
+            titulo: producto.title,
+            descripcion: producto.description,
+            precio: producto.price,
+            imagen: producto.thumbnail
+        });
+    });
+
+    const botonesSumar = document.querySelectorAll(".btn-sumar");
+    const botonesRestar = document.querySelectorAll(".btn-restar");
+    const botonesCarrito = document.querySelectorAll(".btn-agregar-carrito");
+
+    botonesSumar.forEach(function(boton) {
+        boton.addEventListener("click", function() {
+            const cantidad = boton.parentElement.querySelector(".cantidad");
+            cantidad.textContent = parseInt(cantidad.textContent) + 1;
+        });
+    });
+
+    botonesRestar.forEach(function(boton) {
+        boton.addEventListener("click", function() {
+            const cantidad = boton.parentElement.querySelector(".cantidad");
+            const valorActual = parseInt(cantidad.textContent);
+
+            if (valorActual > 0) {
+                cantidad.textContent = valorActual - 1;
+            }
+        });
+    });
+
+    botonesCarrito.forEach(function(boton) {
+        boton.addEventListener("click", function() {
+
+            const usuarioLogueado = sessionStorage.getItem("usuarioLogueado");
+
+            if (!usuarioLogueado) {
+                alert("Debes iniciar sesión para agregar productos al carrito");
+                window.location.href = "auth/login/login.html";
+                return;
+            }
+
+            const cantidad = boton.parentElement.querySelector(".cantidad").textContent;
+
+            if (cantidad == 0) {
+                alert("Seleccione una cantidad");
+                return;
+            }
+
+            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+            const card = boton.closest(".card-body");
+
+            const producto = {
+                titulo: card.querySelector(".card-title").textContent,
+                precio: card.querySelector(".fw-bold").textContent,
+                cantidad: cantidad
+            };
+
+            carrito.push(producto);
+
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+
+            alert("Producto agregado al carrito");
+        });
+    });
+}
+
+cargarProductosHome();

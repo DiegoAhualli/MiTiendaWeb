@@ -19,7 +19,9 @@
             <div class="container">
                 <h1>Bienvenidos a Busticaria</h1>
                 <p>Tu tienda online para encontrar productos de tecnología, ropa y hogar.</p>
-                <a href="#producto-destacado" class="btn btn-busticaria">Ver producto destacado</a>
+                <a href="#productosHome" class="btn btn-busticaria">
+                    Ver productos destacados
+                </a>
             </div>
         </section>
 
@@ -41,15 +43,23 @@
             </div>
         </section>
 
-        <section id="producto-destacado" class="container pb-5">
-            <h2 class="mb-4">Producto destacado</h2>
+        <section id="productosHome" class="container my-5">
+            <h2 class="mb-4">Productos destacados</h2>
 
-            <div class="row" id="contenedorDestacado"></div>
+            <h3 class="mb-3">Tecnología</h3>
+            <div id="productosTecnologiaHome" class="row mb-5"></div>
+
+            <h3 class="mb-3">Ropa</h3>
+            <div id="productosRopaHome" class="row mb-5"></div>
+
+            <h3 class="mb-3">Hogar</h3>
+            <div id="productosHogarHome" class="row mb-5"></div>
         </section>
     </main>
 
     <script src="../components/navbar.component.js"></script>
     <script src="../components/card.component.js"></script>
+    <script src="../api/productos.api.js"></script>
     <script src="./home.controller.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

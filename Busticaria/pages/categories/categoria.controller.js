@@ -72,19 +72,16 @@ async function cargarProductos() {
     const productosFiltrados = productos.filter(function(producto) {
 
         if (categoriaActual === "tecnologia") {
-
             return producto.category === "smartphones"
             || producto.category === "laptops";
         }
 
         if (categoriaActual === "hogar") {
-
             return producto.category === "furniture"
             || producto.category === "home-decoration";
         }
 
         if (categoriaActual === "ropa") {
-
             return producto.category === "mens-shirts"
             || producto.category === "womens-dresses";
         }
@@ -102,76 +99,76 @@ async function cargarProductos() {
 
     });
 
+    const botonesSumar = document.querySelectorAll(".btn-sumar");
+    const botonesRestar = document.querySelectorAll(".btn-restar");
+
+    botonesSumar.forEach(function(boton) {
+        boton.addEventListener("click", function() {
+            const cantidad = boton.parentElement.querySelector(".cantidad");
+            cantidad.textContent = parseInt(cantidad.textContent) + 1;
+        });
+    });
+
+    botonesRestar.forEach(function(boton) {
+        boton.addEventListener("click", function() {
+            const cantidad = boton.parentElement.querySelector(".cantidad");
+            let valorActual = parseInt(cantidad.textContent);
+
+            if (valorActual > 0) {
+                cantidad.textContent = valorActual - 1;
+            }
+        });
+    });
+
+    const botonesCarrito = document.querySelectorAll(".btn-agregar-carrito");
+
+    botonesCarrito.forEach(function(boton){
+
+        boton.addEventListener("click",function(){
+
+            const usuarioLogueado = sessionStorage.getItem("usuarioLogueado");
+
+            if (!usuarioLogueado) {
+
+                alert("Debes iniciar sesión para agregar productos al carrito");
+
+                window.location.href = "../auth/login/login.html";
+
+                return;
+            }
+
+            const cantidad =
+            boton.parentElement
+            .querySelector(".cantidad")
+            .textContent;
+
+            if(cantidad == 0){
+
+                alert("Seleccione una cantidad");
+
+                return;
+            }
+
+            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+            const card = boton.closest(".card-body");
+
+            const producto = {
+                titulo: card.querySelector(".card-title").textContent,
+                precio: card.querySelector(".fw-bold").textContent,
+                cantidad: cantidad
+            };
+
+            carrito.push(producto);
+
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+
+            alert("Producto agregado al carrito");
+
+        });
+
+    });
+
 }
 
 cargarProductos();
-
-const botonesSumar = document.querySelectorAll(".btn-sumar");
-const botonesRestar = document.querySelectorAll(".btn-restar");
-
-botonesSumar.forEach(function(boton) {
-    boton.addEventListener("click", function() {
-        const cantidad = boton.parentElement.querySelector(".cantidad");
-        cantidad.textContent = parseInt(cantidad.textContent) + 1;
-    });
-});
-
-botonesRestar.forEach(function(boton) {
-    boton.addEventListener("click", function() {
-        const cantidad = boton.parentElement.querySelector(".cantidad");
-        let valorActual = parseInt(cantidad.textContent);
-
-        if (valorActual > 0) {
-            cantidad.textContent = valorActual - 1;
-        }
-    });
-});
-
-const botonesCarrito = document.querySelectorAll(".btn-agregar-carrito");
-
-botonesCarrito.forEach(function(boton){
-
-    boton.addEventListener("click",function(){
-
-        const usuarioLogueado = sessionStorage.getItem("usuarioLogueado");
-
-        if (!usuarioLogueado) {
-
-            alert("Debes iniciar sesión para agregar productos al carrito");
-
-            window.location.href = "../auth/login/login.html";
-
-            return;
-        }
-
-        const cantidad =
-        boton.parentElement
-        .querySelector(".cantidad")
-        .textContent;
-
-        if(cantidad == 0){
-
-            alert("Seleccione una cantidad");
-
-            return;
-        }
-
-        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-        const card = boton.closest(".card-body");
-
-        const producto = {
-            titulo: card.querySelector(".card-title").textContent,
-            precio: card.querySelector(".fw-bold").textContent,
-            cantidad: cantidad
-        };
-
-        carrito.push(producto);
-
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-
-        alert("Producto agregado al carrito");
-
-    });
-
-});
