@@ -1,5 +1,6 @@
 const contenedorCarrito = document.getElementById("contenedorCarrito");
 const btnRealizarCompra = document.getElementById("btnRealizarCompra");
+const btnVolverComprar = document.getElementById("btnVolverComprar");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -124,22 +125,53 @@ btnRealizarCompra.addEventListener("click", function() {
         const cantidad = parseInt(producto.cantidad);
         const totalProducto = precioUnitario * cantidad;
 
-        resumen += `${producto.titulo}\n`;
-        resumen += `Cantidad: ${cantidad}\n`;
-        resumen += `Total: $${totalProducto.toFixed(2)}\n\n`;
+        resumen += `${producto.titulo} x${cantidad} = $${totalProducto.toFixed(2)}\n`;
 
         precioFinal += totalProducto;
     });
 
-    resumen += `PRECIO FINAL = $${precioFinal.toFixed(2)}`;
+    resumen += `\nPRECIO FINAL = $${precioFinal.toFixed(2)}`;
+    resumen += "\n\n¿Desea aceptar la compra?";
 
-    alert(resumen);
+    const confirmarCompra = confirm(resumen);
+
+    if (!confirmarCompra) {
+        return;
+    }
+
+    alert("Compra realizada con éxito!");
 
     localStorage.removeItem("carrito");
 
     carrito = [];
 
     mostrarCarrito();
+});
+
+btnVolverComprar.addEventListener("click", function() {
+
+    const opcion = prompt(
+        "Agregar más productos...\n\n" +
+        "r - Ropa\n" +
+        "t - Tecnología\n" +
+        "h - Hogar"
+    );
+
+    if (!opcion) {
+        return;
+    }
+
+    const opcionUsuario = opcion.toLowerCase();
+
+    if (opcionUsuario === "r") {
+        window.location.href = "../categories/categoria-ropa.html";
+    } else if (opcionUsuario === "t") {
+        window.location.href = "../categories/categoria-tecnologia.html";
+    } else if (opcionUsuario === "h") {
+        window.location.href = "../categories/categoria-hogar.html";
+    } else {
+        alert("Opción inválida.");
+    }
 });
 
 mostrarCarrito();

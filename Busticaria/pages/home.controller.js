@@ -117,6 +117,8 @@ async function cargarProductosHome() {
 
             localStorage.setItem("carrito", JSON.stringify(carrito));
 
+            boton.parentElement.querySelector(".cantidad").textContent = 0;
+
             alert("Producto agregado al carrito");
         });
     });
