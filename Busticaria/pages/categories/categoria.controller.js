@@ -162,7 +162,16 @@ async function cargarProductos() {
                 imagen: cardCompleta.querySelector("img").src
             };
 
-            carrito.push(producto);
+            const productoExistente = carrito.find(function(item) {
+                return item.titulo === producto.titulo;
+            });
+
+            if (productoExistente) {
+                productoExistente.cantidad =
+                parseInt(productoExistente.cantidad) + parseInt(producto.cantidad);
+            } else {
+                carrito.push(producto);
+            }
 
             localStorage.setItem("carrito", JSON.stringify(carrito));
 

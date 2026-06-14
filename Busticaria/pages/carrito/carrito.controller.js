@@ -1,6 +1,15 @@
 const contenedorCarrito = document.getElementById("contenedorCarrito");
+const btnRealizarCompra = document.getElementById("btnRealizarCompra");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+function guardarCarrito() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+function obtenerPrecioNumerico(precio) {
+    return parseFloat(precio.replace("$", ""));
+}
 
 function mostrarCarrito() {
 
@@ -31,7 +40,17 @@ function mostrarCarrito() {
 
                         <p class="fw-bold">${producto.precio}</p>
 
-                        <p>Cantidad: ${producto.cantidad}</p>
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <button class="btn btn-outline-secondary btn-restar-carrito" data-indice="${indice}" type="button">
+                                -
+                            </button>
+
+                            <span>${producto.cantidad}</span>
+
+                            <button class="btn btn-outline-secondary btn-sumar-carrito" data-indice="${indice}" type="button">
+                                +
+                            </button>
+                        </div>
 
                         <button class="btn btn-danger btn-eliminar-producto" data-indice="${indice}">
                             Eliminar
@@ -42,26 +61,52 @@ function mostrarCarrito() {
         `;
     });
 
+    activarBotonesCarrito();
+}
+
+function activarBotonesCarrito() {
+
+    const botonesSumar = document.querySelectorAll(".btn-sumar-carrito");
+    const botonesRestar = document.querySelectorAll(".btn-restar-carrito");
     const botonesEliminar = document.querySelectorAll(".btn-eliminar-producto");
+
+    botonesSumar.forEach(function(boton) {
+        boton.addEventListener("click", function() {
+            const indice = boton.getAttribute("data-indice");
+
+            carrito[indice].cantidad = parseInt(carrito[indice].cantidad) + 1;
+
+            guardarCarrito();
+            mostrarCarrito();
+        });
+    });
+
+    botonesRestar.forEach(function(boton) {
+        boton.addEventListener("click", function() {
+            const indice = boton.getAttribute("data-indice");
+
+            if (parseInt(carrito[indice].cantidad) > 1) {
+                carrito[indice].cantidad = parseInt(carrito[indice].cantidad) - 1;
+            } else {
+                carrito.splice(indice, 1);
+            }
+
+            guardarCarrito();
+            mostrarCarrito();
+        });
+    });
 
     botonesEliminar.forEach(function(boton) {
         boton.addEventListener("click", function() {
-
             const indice = boton.getAttribute("data-indice");
 
             carrito.splice(indice, 1);
 
-            localStorage.setItem("carrito", JSON.stringify(carrito));
-
+            guardarCarrito();
             mostrarCarrito();
-
         });
     });
 }
-
-mostrarCarrito();
-
-const btnRealizarCompra = document.getElementById("btnRealizarCompra");
 
 btnRealizarCompra.addEventListener("click", function() {
 
@@ -70,12 +115,31 @@ btnRealizarCompra.addEventListener("click", function() {
         return;
     }
 
-    alert("Compra realizada con éxito!");
+    let resumen = "Resumen de compra:\n\n";
+    let precioFinal = 0;
+
+    carrito.forEach(function(producto) {
+
+        const precioUnitario = obtenerPrecioNumerico(producto.precio);
+        const cantidad = parseInt(producto.cantidad);
+        const totalProducto = precioUnitario * cantidad;
+
+        resumen += `${producto.titulo}\n`;
+        resumen += `Cantidad: ${cantidad}\n`;
+        resumen += `Total: $${totalProducto.toFixed(2)}\n\n`;
+
+        precioFinal += totalProducto;
+    });
+
+    resumen += `PRECIO FINAL = $${precioFinal.toFixed(2)}`;
+
+    alert(resumen);
 
     localStorage.removeItem("carrito");
 
     carrito = [];
 
     mostrarCarrito();
-
 });
+
+mostrarCarrito();
