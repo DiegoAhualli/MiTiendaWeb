@@ -1,4 +1,4 @@
-const API_URL = "https://dummyjson.com/products?limit=200";
+const API_URL = "https://dummyjson.com/products?limit=400";
 
 async function obtenerProductos() {
 
