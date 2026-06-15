@@ -108,15 +108,17 @@ La incorporación de una API permitió trabajar con datos dinámicos y mejorar c
 ```plaintext
 MiTiendaWeb/
 │
-├── assets/
-├── components/
-├── pages/
-│   ├── auth/
-│   ├── carrito/
-│   └── categories/
-├── styles/
-├── index.html
-└── README.md
+├── Busticaria/
+│   ├── api/
+│   ├── assets/
+│   ├── components/
+│   └── pages/
+│   │   └── auth/
+│   │   └── carrito/
+│   │   └── categories/
+│   ├── styles/
+│   ├── README.md
+│   └── index.html
 ```
 
 ---
@@ -144,7 +146,7 @@ https://github.com/DiegoAhualli/MiTiendaWeb
 
 Link del proyecto publicado:
 
-[AGREGAR LINK DE GITHUB PAGES / VERCEL]
+[https://diegoahualli.github.io/MiTiendaWeb/Busticaria/]
 
 ---
 
