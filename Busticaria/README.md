@@ -144,7 +144,7 @@ https://github.com/DiegoAhualli/MiTiendaWeb
 
 Link del proyecto publicado:
 
-[AGREGAR LINK DE GITHUB PAGES / VERCEL]
+[https://diegoahualli.github.io/MiTiendaWeb/Busticaria/]
 
 ---
 
