@@ -18,7 +18,7 @@ Busticaria – Ecommerce Web
 
 ## GitHub Pages
 
-[Sitio publicado Busticaria](https://diegoahualli.github.io/MiTiendaWeb/busticaria/)
+[Sitio publicado Busticaria](https://diegoahualli.github.io/MiTiendaWeb/Busticaria)
 
 ---
 
